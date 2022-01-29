@@ -25,9 +25,9 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_BOOK = gql`
-  mutation addBook($authors: String!, description: String!, title: String!) {
-    addBook(authors: $authors, description: $String, title: $String) {
+export const SAVE_BOOK = gql`
+  mutation saveBook($id: ID!) {
+    saveBook(id: $ID) {
       authors
       description
       bookId
@@ -38,8 +38,11 @@ export const ADD_BOOK = gql`
   }
 `;
 
+export const DELETE_BOOK = gql`
+mutation deletBook($bookId: ID!)
+  deleteBook(bookId: $bookId)
+`
 
-// post(createUser
-    // post(login
-        put(authMiddleware, saveBook)
-        delete(authMiddleware, deleteBook);
+
+
+

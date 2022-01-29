@@ -15,14 +15,6 @@ createUser
 
 
 
-loginUser
-
-saveBook
-
-deleteBook
-
-searchGoogleBooks
-
 export const QUERY_BOOKS = gql`
   query getBooks {
       books{
@@ -33,3 +25,11 @@ export const QUERY_BOOKS = gql`
       link
       title}
 `
+
+
+router.route('/').put(authMiddleware, saveBook)
+router.route('/login').post(login);
+
+router.route('/me').get(authMiddleware, getSingleUser);
+
+router.route('/books/:bookId').delete(authMiddleware, deleteBook);
