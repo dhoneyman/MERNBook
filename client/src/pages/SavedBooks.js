@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap';
+import { useQuery } from '@apollo/client';
 
-import { getMe, deleteBook } from '../utils/API';
+
+// import { getMe, deleteBook } from '../utils/API';
+import { user, deleteBook } from '../utils/mutations'
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
@@ -20,7 +23,7 @@ const SavedBooks = () => {
           return false;
         }
 
-        const response = await getMe(token);
+        const response = await user(token);
 
         if (!response.ok) {
           throw new Error('something went wrong!');

@@ -16,7 +16,7 @@ const bookSchema = new Schema({
     type: String,
     required: true,
   },
-  image: {
+  bookId: {
     type: String,
   },
   link: {
