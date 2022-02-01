@@ -4,9 +4,9 @@ const typeDefs = gql`
   type Book {
     authors: [author]
     description: String
-    bookId
-    link
-    title
+    bookId: ID
+    link: String
+    title: String
     }
     
     type User {
@@ -25,9 +25,9 @@ const typeDefs = gql`
     input BookInput {
         authors: [author]
         description: String
-        bookId
-        link
-        title
+        bookId: ID
+        link: String   
+        title: String
       }
 
       type Query {
@@ -40,5 +40,5 @@ const typeDefs = gql`
         saveBook(bookData: BookInput): User
         deleteBook(bookId: ID!): User
         }
-    }
-    `
+
+    `;
