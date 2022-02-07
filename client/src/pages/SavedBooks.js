@@ -9,13 +9,13 @@ import { DELETE_BOOK } from '../utils/mutations'
 import { GET_USER, GET_BOOKS } from '../utils/queries'
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
-const [deleteBook,{data}] = useMutation(DELETE_BOOK);
-const [getUser] = useQuery(GET_USER);
-const [getBooks] = useQuery(GET_BOOKS);
 
 const SavedBooks = () => {
   const [userData, setUserData] = useState({});
-
+  const [deleteBook,{data}] = useMutation(DELETE_BOOK);
+  const [getUser] = useQuery(GET_USER);
+  const [getBooks] = useQuery(GET_BOOKS);
+  
   // use this to determine if `useEffect()` hook needs to run again
   const userDataLength = Object.keys(userData).length;
 
@@ -53,7 +53,10 @@ const SavedBooks = () => {
     }
 
     try {
-      const response = await deleteBook(bookId, token);
+      const response = await deleteBook({
+        variables: { bookId },
+      });
+      console.log(response);
 
       if (!response.ok) {
         throw new Error('something went wrong!');
